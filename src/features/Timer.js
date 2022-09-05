@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { ProgressBar } from 'react-native-paper';
 import { colors } from '../utils/colors';
 import { fontSizes, spacing } from '../utils/sizes';
 import { RoundedButton } from '../components/RoundedButton';
@@ -7,19 +8,24 @@ import { Countdown } from '../components/CountDown';
 
 export const Timer = ({ focusSubject }) => {
   const [isStarted, setIsStarted] = useState(false);
+  const [progress, setProgress] = useState(1);
   return (
       <View style={styles.container}>
 
         <View style={styles.textContainer}>
           <Countdown
               isPaused={!isStarted}
-              onProgress={() => {}}
+              onProgress={setProgress(progress)}
               onEnd={() => {}}
           />
           <Text style={styles.title}> Focus Feature </Text>
           <Text style={styles.task}>{focusSubject} </Text>
         </View>
-
+        <View style={{paddingTop: spacing.xxl}}>
+          <ProgressBar
+              progress={progress}
+              color={colors.progressBar} />
+        </View>
         <View style={styles.buttonContainer}>
 
           {!isStarted && (

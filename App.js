@@ -8,7 +8,6 @@ import {
   StatusBar,
 } from 'react-native';
 
-import Constants from 'expo-constants';
 import { colors } from './src/utils/colors';
 import { Focus } from './src/features/Focus';
 import { spacing } from './src/utils/sizes';
